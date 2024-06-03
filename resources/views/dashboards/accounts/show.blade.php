@@ -40,7 +40,7 @@
                         <div class="col-md-9">{{ $account->subtype ? $account->subtype : '-' }}</div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-3 font-weight-bold">Deskripsi Akun:</div>
+                        <div class="col-md-3 font-weight-bold">Keterangan Akun:</div>
                         <div class="col-md-9">{{ $account->description }}</div>
                     </div>
                 </div>

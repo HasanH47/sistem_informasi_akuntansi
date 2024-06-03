@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Http\Request;
+use App\Http\Requests\AccountRequest;
 
 class AccountController extends Controller
 {
@@ -31,7 +32,6 @@ class AccountController extends Controller
         return view('dashboards.accounts.index', compact('accounts'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -43,44 +43,22 @@ class AccountController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AccountRequest $request)
     {
-        $request->validate([
-            'account_name' => 'required|string|max:255',
-            'account_type' => 'required|string|in:asset,liability,equity,revenue,expense',
-            'subtype' => [
-                'required_if:account_type,asset,liability',
-                'string',
-                function ($attribute, $value, $fail) use ($request) {
-                    $validSubtypes = [
-                        'asset' => ['Activa Lancar', 'Activa Tetap'],
-                        'liability' => ['Hutang Lancar', 'Hutang Jangka Panjang'],
-                    ];
-                    if (in_array($request->account_type, ['asset', 'liability'])) {
-                        if (!in_array($value, $validSubtypes[$request->account_type])) {
-                            $fail("The selected $attribute is invalid.");
-                        }
-                    } elseif (!is_null($value)) {
-                        $fail("The $attribute must be null for the selected account type.");
-                    }
-                },
-            ],
-            'description' => 'nullable|string',
-        ]);
+        $validatedData = $request->validated();
 
         $accountCode = Account::generateAccountCode($request->account_type, $request->subtype);
 
         Account::create([
             'account_code' => $accountCode,
-            'account_name' => $request->account_name,
-            'account_type' => $request->account_type,
-            'subtype' => $request->account_type == 'asset' || $request->account_type == 'liability' ? $request->subtype : null,
-            'description' => $request->description,
+            'account_name' => $validatedData['account_name'],
+            'account_type' => $validatedData['account_type'],
+            'subtype' => $request->account_type == 'asset' || $request->account_type == 'liability' ? $validatedData['subtype'] : null,
+            'description' => $validatedData['description'],
         ]);
 
         return redirect()->route('dashboards.accounts.index')->with('success', 'Akun berhasil ditambahkan.');
     }
-
 
     /**
      * Display the specified resource.
@@ -105,37 +83,16 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AccountRequest $request, string $id)
     {
         $account = Account::findOrFail($id);
 
-        $request->validate([
-            'account_name' => 'required|string|max:255',
-            'account_type' => 'required|string|in:asset,liability,equity,revenue,expense',
-            'subtype' => [
-                'required_if:account_type,asset,liability',
-                'string',
-                function ($attribute, $value, $fail) use ($request) {
-                    $validSubtypes = [
-                        'asset' => ['Activa Lancar', 'Activa Tetap'],
-                        'liability' => ['Hutang Lancar', 'Hutang Jangka Panjang'],
-                    ];
-                    if (in_array($request->account_type, ['asset', 'liability'])) {
-                        if (!in_array($value, $validSubtypes[$request->account_type])) {
-                            $fail("The selected $attribute is invalid.");
-                        }
-                    } elseif (!is_null($value)) {
-                        $fail("The $attribute must be null for the selected account type.");
-                    }
-                },
-            ],
-            'description' => 'nullable|string',
-        ]);
+        $validatedData = $request->validated();
 
         // Cek apakah tipe akun berubah atau tidak
-        if ($account->account_type !== $request->account_type || $account->subtype !== $request->subtype) {
+        if ($account->account_type !== $validatedData['account_type'] || $account->subtype !== $validatedData['subtype']) {
             // Buat kode akun baru
-            $accountCode = Account::generateAccountCode($request->account_type, $request->subtype);
+            $accountCode = Account::generateAccountCode($validatedData['account_type'], $validatedData['subtype']);
         } else {
             // Gunakan kode akun yang sudah ada
             $accountCode = $account->account_code;
@@ -143,10 +100,10 @@ class AccountController extends Controller
 
         $account->update([
             'account_code' => $accountCode,
-            'account_name' => $request->account_name,
-            'account_type' => $request->account_type,
-            'subtype' => $request->account_type == 'asset' || $request->account_type == 'liability' ? $request->subtype : null,
-            'description' => $request->description,
+            'account_name' => $validatedData['account_name'],
+            'account_type' => $validatedData['account_type'],
+            'subtype' => $validatedData['account_type'] == 'asset' || $validatedData['account_type'] == 'liability' ? $validatedData['subtype'] : null,
+            'description' => $validatedData['description'],
         ]);
 
         return redirect()->route('dashboards.accounts.index')->with('success', 'Akun berhasil diupdate.');

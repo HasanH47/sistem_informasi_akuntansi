@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\LedgerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,4 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/dashboard/journals/create', [JournalController::class, 'store'])->name('dashboards.journals.store');
     Route::get('/dashboard/journals/{account}', [JournalController::class, 'show'])->name('dashboards.journals.show');
     Route::delete('/dashboard/journals/{account}', [JournalController::class, 'destroy'])->name('dashboards.journals.destroy');
+
+    // Ledgers
+    Route::get('/dashboard/ledgers', [LedgerController::class, 'index'])->name('dashboards.ledgers.index');
+    Route::get('/dashboard/ledgers/search', [LedgerController::class, 'search'])->name('dashboards.ledgers.search');
 });

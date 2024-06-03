@@ -30,7 +30,8 @@
                 <span class="hide-menu">Akun</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('dashboards.accounts.index') }}" aria-expanded="false">
+                <a class="sidebar-link {{ Request::is('dashboard/accounts*') ? 'active' : '' }}"
+                    href="{{ route('dashboards.accounts.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-bookmark"></i>
                     </span>
@@ -42,7 +43,8 @@
                 <span class="hide-menu">Pencatatan dan Pengelolaan Transaksi</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('dashboards.transactions.index') }}" aria-expanded="false">
+                <a class="sidebar-link {{ Request::is('dashboard/transactions*') ? 'active' : '' }}"
+                    href="{{ route('dashboards.transactions.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-journal-text"></i>
                     </span>
@@ -50,7 +52,8 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('dashboards.journals.index') }}" aria-expanded="false">
+                <a class="sidebar-link {{ Request::is('dashboard/journals*') ? 'active' : '' }}"
+                    href="{{ route('dashboards.journals.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-journal-check"></i>
                     </span>
@@ -58,7 +61,8 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                <a class="sidebar-link {{ Request::is('dashboard/ledgers*') ? 'active' : '' }}"
+                    href="{{ route('dashboards.ledgers.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-book"></i>
                     </span>
@@ -70,15 +74,15 @@
                 <span class="hide-menu">Penyesuaian dan Verifikasi</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                <a class="sidebar-link" href="#" aria-expanded="false">
                     <span>
                         <i class="bi bi-bar-chart"></i>
                     </span>
-                    <span class="hide-menu">Neraca Saldo</span>
+                    <span class="hide-menu">Neraca Lajur</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
+                <a class="sidebar-link" href="#" aria-expanded="false">
                     <span>
                         <i class="bi bi-pencil-square"></i>
                     </span>
@@ -90,7 +94,7 @@
                 <span class="hide-menu">Pelaporan Keuangan</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                <a class="sidebar-link" href="#" aria-expanded="false">
                     <span>
                         <i class="bi bi-file-earmark-text"></i>
                     </span>
@@ -102,7 +106,7 @@
                 <span class="hide-menu">Penutupan dan Pembalikan</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                <a class="sidebar-link" href="#" aria-expanded="false">
                     <span>
                         <i class="bi bi-journal-richtext"></i>
                     </span>
@@ -110,7 +114,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                <a class="sidebar-link" href="#" aria-expanded="false">
                     <span>
                         <i class="bi bi-arrow-repeat"></i>
                     </span>

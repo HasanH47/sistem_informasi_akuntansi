@@ -29,13 +29,13 @@
                     @if ($journalEntries->isEmpty())
                         <span>Tidak ada data jurnal</span>
                     @else
-                        <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-hover table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     {{-- <th>No</th> --}}
                                     <th>Tanggal</th>
                                     <th>Akun</th>
-                                    <th>Deskripsi</th>
+                                    <th>Keterangan</th>
                                     <th>Debit</th>
                                     <th>Kredit</th>
                                     <th>Aksi</th>

@@ -64,7 +64,7 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="deskripsiAkun" class="form-label">Deskripsi Akun</label>
+                                    <label for="deskripsiAkun" class="form-label">Keterangan Akun</label>
                                     <textarea name="description" class="form-control @error('description') is-invalid @enderror" cols="30"
                                         rows="10">{{ old('description', $account->description) }}</textarea>
                                     @error('description')

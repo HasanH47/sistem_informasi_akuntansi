@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\Account;
+use App\Http\Requests\TransactionRequest;
 
 class TransactionController extends Controller
 {
@@ -13,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->sortByDesc('date');
+        $transactions = Transaction::all()->sortByDesc('transaction_date');
         return view('dashboards.transactions.index', compact('transactions'));
     }
 
@@ -29,26 +30,15 @@ class TransactionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TransactionRequest $request)
     {
-
-        $request->merge([
-            'amount' => str_replace('.', '', $request->amount),
-        ]);
-
-        $request->validate([
-            'transaction_date' => 'required|date',
-            'description' => 'required|string|max:255',
-            'amount' => 'required|numeric',
-            'account' => 'required|exists:accounts,id',
-        ]);
-
+        $validatedData = $request->validated();
 
         Transaction::create([
-            'transaction_date' => $request->transaction_date,
-            'description' => $request->description,
-            'amount' => $request->amount,
-            'account_id' => $request->account,
+            'transaction_date' => $validatedData['transaction_date'],
+            'description' => $validatedData['description'],
+            'amount' => $validatedData['amount'],
+            'account_id' => $validatedData['account'],
         ]);
 
         return redirect()->route('dashboards.transactions.index')->with('success', 'Transaksi berhasil ditambahkan.');
@@ -78,31 +68,19 @@ class TransactionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TransactionRequest $request, string $id)
     {
         $transaction = Transaction::findOrFail($id);
 
-        $request->merge([
-            'amount' => str_replace('.', '', $request->amount),
-        ]);
+        $validatedData = $request->validated();
 
-        // Validasi data yang dikirim oleh form
-        $request->validate([
-            'transaction_date' => 'required|date',
-            'description' => 'required|string|max:255',
-            'amount' => 'required|numeric',
-            'account' => 'required|exists:accounts,id',
-        ]);
-
-        // Update transaksi di database
         $transaction->update([
-            'transaction_date' => $request->transaction_date,
-            'description' => $request->description,
-            'amount' => $request->amount,
-            'account_id' => $request->account,
+            'transaction_date' => $validatedData['transaction_date'],
+            'description' => $validatedData['description'],
+            'amount' => $validatedData['amount'],
+            'account_id' => $validatedData['account'],
         ]);
 
-        // Redirect ke halaman index transaksi dengan pesan sukses
         return redirect()->route('dashboards.transactions.index')->with('success', 'Transaksi berhasil diupdate.');
     }
 

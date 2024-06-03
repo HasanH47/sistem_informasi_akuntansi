@@ -29,7 +29,7 @@
                     @if ($accounts->isEmpty())
                         <span>Tidak ada data transaksi</span>
                     @else
-                        <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-hover table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     {{-- <th>No</th> --}}
@@ -37,7 +37,7 @@
                                     <th>Nama Akun</th>
                                     <th>Tipe Akun</th>
                                     <th>Subtipe</th>
-                                    <th>Deskripsi</th>
+                                    <th>Keterangan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

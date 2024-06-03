@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transaction;
 use App\Models\JournalEntry;
+use App\Http\Requests\JournalRequest;
 
 class JournalController extends Controller
 {
@@ -13,7 +14,7 @@ class JournalController extends Controller
      */
     public function index()
     {
-        $journalEntries = JournalEntry::all();
+        $journalEntries = JournalEntry::all()->sortByDesc('entry_date');
         return view('dashboards.journals.index', compact('journalEntries'));
     }
 
@@ -34,25 +35,19 @@ class JournalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(JournalRequest $request)
     {
-        $request->merge([
-            'amount' => str_replace('.', '', $request->amount),
-        ]);
+        $validatedData = $request->validated();
 
-        $request->validate([
-            'transaction_id' => 'required|exists:transactions,id',
-            'entry_type' => 'required|in:debit,credit',
-        ]);
+        $amount = str_replace(',', '.', str_replace('.', '', $validatedData['amount']));
 
-
-        $debit = ($request->entry_type === 'debit') ? $request->amount : 0;
-        $credit = ($request->entry_type === 'credit') ? $request->amount : 0;
+        $debit = ($validatedData['entry_type'] === 'debit') ? $amount : 0;
+        $credit = ($validatedData['entry_type'] === 'credit') ? $amount : 0;
 
         JournalEntry::create([
-            'transaction_id' => $request->transaction_id,
+            'transaction_id' => $validatedData['transaction_id'],
             'entry_date' => now(),
-            'account_id' => $request->account_id,
+            'account_id' => $validatedData['account_id'],
             'debit' => $debit,
             'credit' => $credit,
         ]);
@@ -65,23 +60,9 @@ class JournalController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $journalEntrys = JournalEntry::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return view('dashboards.journals.show', compact('journalEntrys'));
     }
 
     /**

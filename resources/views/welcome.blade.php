@@ -17,7 +17,7 @@
     <div class="text-center p-5" style="background-color: #e9ecef;">
         <h2 class="mb-4" style="color: #333;">Modul Aplikasi</h2>
         <div class="row">
-            @foreach ([['Akun', 'Kelola akun-akun dalam akuntansi Anda dengan detail dan terstruktur.', 'bi-bookmark'], ['Pencatatan Transaksi', 'Catat semua transaksi keuangan Anda dengan mudah dan cepat.', 'bi-journal-text'], ['Jurnal Umum dan Khusus', 'Kelola jurnal umum dan jurnal khusus Anda dengan sistematis dan efisien.', 'bi-journal-check'], ['Buku Besar', 'Lihat dan kelola buku besar Anda untuk memantau saldo setiap akun.', 'bi-book'], ['Neraca Saldo', 'Lihat dan kelola neraca saldo Anda untuk memastikan semua akun seimbang.', 'bi-bar-chart'], ['Penyesuaian', 'Lakukan penyesuaian keuangan Anda untuk memastikan data akurat dan terkini.', 'bi-pencil-square'], ['Laporan Keuangan', 'Buat dan lihat laporan keuangan untuk analisis dan pelaporan.', 'bi-file-earmark-text'], ['Penutupan Buku', 'Lakukan penutupan buku keuangan pada akhir periode akuntansi.', 'bi-journal-richtext'], ['Entri Pembalikan', 'Kelola entri pembalikan keuangan Anda untuk mengoreksi kesalahan sebelumnya.', 'bi-arrow-repeat']] as $module)
+            @foreach ([['Akun', 'Kelola akun-akun dalam akuntansi Anda dengan detail dan terstruktur.', 'bi-bookmark'], ['Pencatatan Transaksi', 'Catat semua transaksi keuangan Anda dengan mudah dan cepat.', 'bi-journal-text'], ['Jurnal Umum dan Khusus', 'Kelola jurnal umum dan jurnal khusus Anda dengan sistematis dan efisien.', 'bi-journal-check'], ['Buku Besar', 'Lihat dan kelola buku besar Anda untuk memantau saldo setiap akun.', 'bi-book'], ['Neraca Lajur', 'Lihat dan kelola neraca lajur Anda untuk memastikan kesesuaian antara laporan keuangan.', 'bi-bar-chart'], ['Penyesuaian', 'Lakukan penyesuaian keuangan Anda untuk memastikan data akurat dan terkini.', 'bi-pencil-square'], ['Laporan Keuangan', 'Buat dan lihat laporan keuangan untuk analisis dan pelaporan.', 'bi-file-earmark-text'], ['Penutupan Buku', 'Lakukan penutupan buku keuangan pada akhir periode akuntansi.', 'bi-journal-richtext'], ['Entri Pembalikan', 'Kelola entri pembalikan keuangan Anda untuk mengoreksi kesalahan sebelumnya.', 'bi-arrow-repeat']] as $module)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm" style="background-color: #fff;">
                         <div class="card-body text-center">
@@ -121,8 +121,8 @@
                         <li class="timeline-reverse">
                             <div class="timeline-icon"><i class="bi bi-bar-chart"></i></div>
                             <div class="timeline-content">
-                                <h4>Modul Neraca Saldo</h4>
-                                <p>Lihat dan kelola neraca saldo Anda untuk memastikan semua akun seimbang.</p>
+                                <h4>Modul Neraca Lajur</h4>
+                                <p>Lihat dan kelola neraca lajur Anda untuk memastikan kesesuaian antara laporan keuangan.</p>
                             </div>
                         </li>
                         <li class="timeline-inverted">

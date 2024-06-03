@@ -32,7 +32,7 @@
                             {{ $transactions->account->account_code . '-' . $transactions->account->account_name }}</div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-3 font-weight-bold">Deskripsi Transaksi:</div>
+                        <div class="col-md-3 font-weight-bold">Keterangan Transaksi:</div>
                         <div class="col-md-9">{{ $transactions->description }}</div>
                     </div>
                     <div class="row mb-3">

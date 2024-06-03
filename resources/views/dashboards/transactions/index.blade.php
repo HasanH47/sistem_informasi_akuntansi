@@ -29,13 +29,13 @@
                     @if ($transactions->isEmpty())
                         <span>Tidak ada data transaksi</span>
                     @else
-                        <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-hover table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    {{-- <th>No</th> --}}
                                     <th>Tanggal</th>
                                     <th>Akun</th>
-                                    <th>Deskripsi</th>
+                                    <th>Keterangan</th>
                                     <th>Nominal</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach ($transactions as $key => $transaction)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
+                                        {{-- <td>{{ $key + 1 }}</td> --}}
                                         <td>
                                             {{ $transaction->transaction_date }}
                                         </td>
