@@ -60,19 +60,22 @@
                                             {{ Str::limit($account->description, 100, '...') }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('dashboards.accounts.show', $account->id) }}"
-                                                class="btn btn-sm btn-info">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="{{ route('dashboards.accounts.edit', $account->id) }}"
-                                                class="btn btn-sm btn-warning">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-danger delete-account"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                data-account-id="{{ $account->id }}">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('dashboards.accounts.show', $account->id) }}"
+                                                    class="btn btn-sm btn-info rounded-start me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a href="{{ route('dashboards.accounts.edit', $account->id) }}"
+                                                    class="btn btn-sm btn-warning me-1">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-danger rounded-end delete-account"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                    data-account-id="{{ $account->id }}">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

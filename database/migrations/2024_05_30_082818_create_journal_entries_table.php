@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('journal_entries', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('transaction_id')->references('id')->on('transactions');
+            $table->foreignUuid('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
             $table->date('entry_date');
-            $table->foreignUuid('account_id')->references('id')->on('accounts');
+            $table->foreignUuid('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->decimal('debit', 15, 2)->default(0);
             $table->decimal('credit', 15, 2)->default(0);
             $table->timestamps();

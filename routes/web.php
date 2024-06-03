@@ -36,7 +36,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard/journals/create', [JournalController::class, 'create'])->name('dashboards.journals.create');
     Route::post('/dashboard/journals/create', [JournalController::class, 'store'])->name('dashboards.journals.store');
     Route::get('/dashboard/journals/{account}', [JournalController::class, 'show'])->name('dashboards.journals.show');
-    Route::get('/dashboard/journals/{account}/edit', [JournalController::class, 'edit'])->name('dashboards.journals.edit');
-    Route::put('/dashboard/journals/{account}', [JournalController::class, 'update'])->name('dashboards.journals.update');
     Route::delete('/dashboard/journals/{account}', [JournalController::class, 'destroy'])->name('dashboards.journals.destroy');
 });

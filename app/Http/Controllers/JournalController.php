@@ -22,17 +22,13 @@ class JournalController extends Controller
      */
     public function create()
     {
-        // Mendapatkan semua transaksi yang belum ada dalam jurnal
-        $transactions = Transaction::whereNotIn('id', function ($query) {
-            $query->select('transaction_id')->from('journal_entries');
-        })->get();
+        $transactions = Transaction::select('transactions.id', 'transactions.account_id', 'accounts.account_code', 'accounts.account_name', 'transactions.transaction_date', 'transactions.description', 'transactions.amount')
+            ->join('accounts', 'transactions.account_id', '=', 'accounts.id')
+            ->leftJoin('journal_entries', 'transactions.id', '=', 'journal_entries.transaction_id')
+            ->whereNull('journal_entries.id')
+            ->get();
 
-        // Mendapatkan id transaksi yang sudah ada dalam jurnal
-        $selectedTransactions = Transaction::whereIn('id', function ($query) {
-            $query->select('transaction_id')->from('journal_entries');
-        })->pluck('id')->toArray();
-
-        return view('dashboards.journals.create', compact('transactions', 'selectedTransactions'));
+        return view('dashboards.journals.create', compact('transactions'));
     }
 
     /**
@@ -40,7 +36,28 @@ class JournalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->merge([
+            'amount' => str_replace('.', '', $request->amount),
+        ]);
+
+        $request->validate([
+            'transaction_id' => 'required|exists:transactions,id',
+            'entry_type' => 'required|in:debit,credit',
+        ]);
+
+
+        $debit = ($request->entry_type === 'debit') ? $request->amount : 0;
+        $credit = ($request->entry_type === 'credit') ? $request->amount : 0;
+
+        JournalEntry::create([
+            'transaction_id' => $request->transaction_id,
+            'entry_date' => now(),
+            'account_id' => $request->account_id,
+            'debit' => $debit,
+            'credit' => $credit,
+        ]);
+
+        return redirect()->route('dashboards.journals.index')->with('success', 'Transaksi berhasil ditambahkan.');
     }
 
     /**
@@ -72,6 +89,8 @@ class JournalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $journalEntry = JournalEntry::findOrFail($id);
+        $journalEntry->delete();
+        return redirect()->route('dashboards.journals.index')->with('success', 'Transaksi berhasil dihapus.');
     }
 }

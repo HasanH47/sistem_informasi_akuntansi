@@ -18,6 +18,7 @@ class JournalEntry extends Model
     protected $fillable = [
         'transaction_id',
         'account_id',
+        'entry_date',
         'debit',
         'credit',
     ];

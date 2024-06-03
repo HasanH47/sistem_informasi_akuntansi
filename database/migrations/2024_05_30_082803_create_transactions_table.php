@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('transaction_date');
             $table->text('description');
             $table->decimal('amount', 15, 2);
-            $table->foreignUuid('account_id')->references('id')->on('accounts');
+            $table->foreignUuid('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->timestamps();
         });
     }

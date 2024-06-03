@@ -67,20 +67,18 @@
                                         <td>
                                             Rp{{ $journal->credit ? number_format($journal->credit, 2, ',', '.') : 0 }}
                                         </td>
-                                        <td>
-                                            <a href="{{ route('dashboards.journals.show', $journal->id) }}"
-                                                class="btn btn-sm btn-info">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="{{ route('dashboards.journals.edit', $journal->id) }}"
-                                                class="btn btn-sm btn-warning">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-danger delete-journal"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                data-transaction-id="{{ $journal->id }}">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
+                                        <td style="white-space: nowrap;">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('dashboards.journals.show', $journal->id) }}"
+                                                    class="btn btn-sm btn-info me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-sm btn-danger delete-journal"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                    data-transaction-id="{{ $journal->id }}">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

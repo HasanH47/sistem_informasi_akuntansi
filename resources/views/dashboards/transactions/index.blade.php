@@ -56,19 +56,22 @@
                                             Rp{{ number_format($transaction->amount, 2, ',', '.') }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('dashboards.transactions.show', $transaction->id) }}"
-                                                class="btn btn-sm btn-info">
-                                                <i class="bi bi-eye"></i>
-                                            </a>
-                                            <a href="{{ route('dashboards.transactions.edit', $transaction->id) }}"
-                                                class="btn btn-sm btn-warning">
-                                                <i class="bi bi-pencil"></i>
-                                            </a>
-                                            <button type="button" class="btn btn-sm btn-danger delete-transaction"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                data-transaction-id="{{ $transaction->id }}">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('dashboards.transactions.show', $transaction->id) }}"
+                                                    class="btn btn-sm btn-info rounded-start me-1">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a href="{{ route('dashboards.transactions.edit', $transaction->id) }}"
+                                                    class="btn btn-sm btn-warning me-1">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-danger rounded-end delete-transaction"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                    data-transaction-id="{{ $transaction->id }}">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

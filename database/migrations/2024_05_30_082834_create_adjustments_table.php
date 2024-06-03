@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->date('date');
             $table->text('description');
-            $table->foreignUuid('account_id')->references('id')->on('accounts');
+            $table->foreignUuid('account_id')->references('id')->on('accounts')->onDelete('cascade');
             $table->decimal('amount', 15, 2);
             $table->enum('type', ['debit', 'credit']);
             $table->timestamps();
