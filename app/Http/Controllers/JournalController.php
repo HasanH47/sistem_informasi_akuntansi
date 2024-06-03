@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transaction;
 use App\Models\JournalEntry;
 
 class JournalController extends Controller
@@ -21,7 +22,17 @@ class JournalController extends Controller
      */
     public function create()
     {
-        //
+        // Mendapatkan semua transaksi yang belum ada dalam jurnal
+        $transactions = Transaction::whereNotIn('id', function ($query) {
+            $query->select('transaction_id')->from('journal_entries');
+        })->get();
+
+        // Mendapatkan id transaksi yang sudah ada dalam jurnal
+        $selectedTransactions = Transaction::whereIn('id', function ($query) {
+            $query->select('transaction_id')->from('journal_entries');
+        })->pluck('id')->toArray();
+
+        return view('dashboards.journals.create', compact('transactions', 'selectedTransactions'));
     }
 
     /**

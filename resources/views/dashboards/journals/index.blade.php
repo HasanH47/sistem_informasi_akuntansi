@@ -14,7 +14,7 @@
                 <div>
                     <i class="fas fa-table mr-1"></i> Data Jurnal
                 </div>
-                <a href="{{ route('dashboards.transactions.create') }}" class="btn btn-primary">
+                <a href="{{ route('dashboards.journals.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-lg"></i> Tambah Jurnal
                 </a>
             </div>
