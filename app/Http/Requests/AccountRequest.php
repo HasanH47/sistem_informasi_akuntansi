@@ -53,15 +53,15 @@ class AccountRequest extends FormRequest
     public function messages()
     {
         return [
-            'account_name.required' => 'Account name is required.',
-            'account_name.string' => 'Account name must be a string.',
-            'account_name.max' => 'Account name may not be greater than :max characters.',
-            'account_type.required' => 'Account type is required.',
-            'account_type.string' => 'Account type must be a string.',
-            'account_type.in' => 'Invalid account type.',
-            'subtype.required_if' => 'Subtype is required for asset or liability account type.',
-            'subtype.string' => 'Subtype must be a string.',
-            'description.string' => 'Description must be a string.',
+            'account_name.required' => 'Nama akun wajib diisi.',
+            'account_name.string' => 'Nama akun harus berupa string.',
+            'account_name.max' => 'Nama akun tidak boleh lebih dari :max karakter.',
+            'account_type.required' => 'Tipe akun wajib diisi.',
+            'account_type.string' => 'Tipe akun harus berupa string.',
+            'account_type.in' => 'Tipe akun tidak valid.',
+            'subtype.required_if' => 'Subtype wajib diisi untuk tipe akun aset atau kewajiban.',
+            'subtype.string' => 'Subtype harus berupa string.',
+            'description.string' => 'Deskripsi harus berupa string.',
         ];
     }
 }
