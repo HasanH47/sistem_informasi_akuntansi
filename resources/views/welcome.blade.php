@@ -5,92 +5,9 @@
 @section('content')
     <div class="container mt-5">
         <div class="text-center">
-            <h1 class="display-4">Selamat Datang di Sistem Informasi Akuntansi</h1>
+            <h1 class="display-4">Selamat Datang di SIA (Sistem Informasi Akuntansi)</h1>
             <p class="lead">Kelola Keuangan Anda dengan Mudah dan Efisien</p>
             <hr class="my-4">
-        </div>
-
-        <div class="row justify-content-center mt-5">
-            <div class="col-lg-8">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h3 class="card-title text-center mb-4">Flow Aplikasi</h3>
-                        <ul class="timeline">
-                            <li>
-                                <div class="timeline-icon"><i class="bi bi-box-arrow-in-right"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Login</h4>
-                                    <p>Masuk ke sistem menggunakan akun Anda untuk mengakses semua fitur yang tersedia.</p>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-icon"><i class="bi bi-speedometer2"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Dashboard</h4>
-                                    <p>Dashboard utama yang menyediakan akses cepat ke semua modul dan fitur.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-icon"><i class="bi bi-journal-text"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Pencatatan Transaksi</h4>
-                                    <p>Catat semua transaksi keuangan Anda dengan mudah dan cepat untuk memudahkan
-                                        monitoring.</p>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-icon"><i class="bi bi-journal-check"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Jurnal Umum dan Jurnal Khusus</h4>
-                                    <p>Kelola jurnal umum dan jurnal khusus Anda dengan sistematis dan efisien.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-icon"><i class="bi bi-book"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Buku Besar</h4>
-                                    <p>Lihat dan kelola buku besar Anda untuk memantau saldo setiap akun.</p>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-icon"><i class="bi bi-bar-chart"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Neraca Saldo</h4>
-                                    <p>Lihat dan kelola neraca saldo Anda untuk memastikan semua akun seimbang.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-icon"><i class="bi bi-pencil-square"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Penyesuaian</h4>
-                                    <p>Lakukan penyesuaian keuangan Anda untuk memastikan data akurat dan terkini.</p>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-icon"><i class="bi bi-file-earmark-text"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Laporan Keuangan</h4>
-                                    <p>Buat dan lihat laporan keuangan untuk analisis dan pelaporan.</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-icon"><i class="bi bi-journal-richtext"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Penutupan Buku</h4>
-                                    <p>Lakukan penutupan buku keuangan pada akhir periode akuntansi.</p>
-                                </div>
-                            </li>
-                            <li class="timeline-inverted">
-                                <div class="timeline-icon"><i class="bi bi-arrow-repeat"></i></div>
-                                <div class="timeline-content">
-                                    <h4>Modul Entri Pembalikan</h4>
-                                    <p>Kelola entri pembalikan keuangan Anda untuk mengoreksi kesalahan sebelumnya.</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div class="row mt-5">
@@ -100,7 +17,7 @@
         </div>
 
         <div class="row">
-            @foreach ([['Akun', 'Kelola akun dan profil pengguna Anda.', 'bi-person-circle'], ['Pencatatan Transaksi', 'Catat semua transaksi keuangan Anda dengan mudah dan cepat.', 'bi-journal-text'], ['Jurnal Umum dan Khusus', 'Kelola jurnal umum dan jurnal khusus Anda dengan sistematis dan efisien.', 'bi-journal-check'], ['Buku Besar', 'Lihat dan kelola buku besar Anda untuk memantau saldo setiap akun.', 'bi-book'], ['Neraca Saldo', 'Lihat dan kelola neraca saldo Anda untuk memastikan semua akun seimbang.', 'bi-bar-chart'], ['Penyesuaian', 'Lakukan penyesuaian keuangan Anda untuk memastikan data akurat dan terkini.', 'bi-pencil-square'], ['Laporan Keuangan', 'Buat dan lihat laporan keuangan untuk analisis dan pelaporan.', 'bi-file-earmark-text'], ['Penutupan Buku', 'Lakukan penutupan buku keuangan pada akhir periode akuntansi.', 'bi-journal-richtext'], ['Entri Pembalikan', 'Kelola entri pembalikan keuangan Anda untuk mengoreksi kesalahan sebelumnya.', 'bi-arrow-repeat']] as $module)
+            @foreach ([['Akun', 'Kelola akun Anda.', 'bi-person-circle'], ['Pencatatan Transaksi', 'Catat semua transaksi keuangan Anda dengan mudah dan cepat.', 'bi-journal-text'], ['Jurnal Umum dan Khusus', 'Kelola jurnal umum dan jurnal khusus Anda dengan sistematis dan efisien.', 'bi-journal-check'], ['Buku Besar', 'Lihat dan kelola buku besar Anda untuk memantau saldo setiap akun.', 'bi-book'], ['Neraca Saldo', 'Lihat dan kelola neraca saldo Anda untuk memastikan semua akun seimbang.', 'bi-bar-chart'], ['Penyesuaian', 'Lakukan penyesuaian keuangan Anda untuk memastikan data akurat dan terkini.', 'bi-pencil-square'], ['Laporan Keuangan', 'Buat dan lihat laporan keuangan untuk analisis dan pelaporan.', 'bi-file-earmark-text'], ['Penutupan Buku', 'Lakukan penutupan buku keuangan pada akhir periode akuntansi.', 'bi-journal-richtext'], ['Entri Pembalikan', 'Kelola entri pembalikan keuangan Anda untuk mengoreksi kesalahan sebelumnya.', 'bi-arrow-repeat']] as $module)
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow">
                         <div class="card-body text-center">

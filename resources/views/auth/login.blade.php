@@ -14,11 +14,11 @@
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="{{ route('welcome') }}" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="{{ asset('/assets/images/logos/dark-logo.svg') }}" width="180"
-                                        alt="">
+                                <a href="{{ route('welcome') }}"
+                                    class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <h1 class="m-0 fs-4">SIA</h1>
                                 </a>
-                                <p class="text-center">Sistem Informasi Akuntansi</p>
+                                <p class="paragraf text-center">Sistem Informasi Akuntansi</p>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="mb-3">
@@ -76,4 +76,17 @@
             </div>
         </div>
     </div>
+    <style>
+        .logo-img h1 {
+            font-size: 32px !important;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .card-body  .paragraf {
+            color: #007bff !important;
+            font-size: 14px;
+            margin-top: -5px;
+        }
+    </style>
 @endsection

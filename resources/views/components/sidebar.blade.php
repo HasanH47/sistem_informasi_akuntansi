@@ -1,8 +1,10 @@
 <!-- Sidebar scroll-->
 <div>
-    <div class="brand-logo d-flex align-items-center justify-content-between">
-        <a href="{{ route('home') }}" class="text-nowrap logo-img">
-            <img src="{{ asset('/assets/images/logos/dark-logo.svg') }}" width="180" alt="" />
+    <div class="brand-logo align-items-center justify-content-between">
+        <a href="{{ route('dashboards.index') }}" class="text-nowrap">
+            <h1 class="m-0 fs-4">SIA
+            </h1>
+            <p class="m-0" style="color: #007bff">Sistem Informasi Akuntansi</p>
         </a>
         <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -16,7 +18,7 @@
                 <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('dashboards.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-speedometer2"></i>
                     </span>
@@ -28,9 +30,9 @@
                 <span class="hide-menu">Akun</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('dashboards.accounts.index') }}" aria-expanded="false">
                     <span>
-                        <i class="bi bi-person"></i>
+                        <i class="bi bi-bookmark"></i>
                     </span>
                     <span class="hide-menu">List Akun</span>
                 </a>
@@ -40,7 +42,7 @@
                 <span class="hide-menu">Pencatatan dan Pengelolaan Transaksi</span>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('dashboards.transactions.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-journal-text"></i>
                     </span>
@@ -48,7 +50,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{ route('dashboards.journals.index') }}" aria-expanded="false">
                     <span>
                         <i class="bi bi-journal-check"></i>
                     </span>
@@ -122,6 +124,17 @@
 <!-- End Sidebar scroll-->
 
 <style>
+    .brand-logo {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .brand-logo h1 {
+        font-size: 24px !important;
+        font-weight: bold;
+        color: #343a40;
+    }
+
     .sidebar-nav ul .sidebar-item .sidebar-link {
         color: #343a40;
         display: flex;
