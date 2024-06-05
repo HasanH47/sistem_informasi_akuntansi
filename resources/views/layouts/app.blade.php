@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="shortcut icon" type="image/png" href="{{ asset('/assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
     <link rel="stylesheet"
@@ -50,14 +51,14 @@
             padding: 20px 0;
             text-align: center;
             font-size: 14px;
-        }   
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{route('welcome')}}">
+            <a class="navbar-brand" href="{{ route('welcome') }}">
                 <img src="{{ asset('/assets/images/logos/favicon.png') }}" alt="Logo" width="30" height="30"
                     class="d-inline-block align-top">
                 SIA

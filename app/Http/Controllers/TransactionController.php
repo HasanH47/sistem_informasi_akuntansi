@@ -14,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transactions = Transaction::all()->sortByDesc('transaction_date');
+        $transactions = Transaction::all();
         return view('dashboards.transactions.index', compact('transactions'));
     }
 
@@ -33,6 +33,11 @@ class TransactionController extends Controller
     public function store(TransactionRequest $request)
     {
         $validatedData = $request->validated();
+
+        $request->merge([
+            'amount' => str_replace('.', '', $request->amount),
+        ]);
+
 
         Transaction::create([
             'transaction_date' => $validatedData['transaction_date'],
@@ -73,6 +78,10 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
 
         $validatedData = $request->validated();
+
+        $request->merge([
+            'amount' => str_replace('.', '', $request->amount),
+        ]);
 
         $transaction->update([
             'transaction_date' => $validatedData['transaction_date'],

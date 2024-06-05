@@ -53,9 +53,7 @@
                                 <div class="mb-3">
                                     <label for="nominal" class="form-label">Nominal</label>
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">Rp</div>
-                                        </div>
+                                        <div class="input-group-text">Rp</div>
                                         <input type="text" name="amount" id="nominal"
                                             class="form-control @error('amount') is-invalid @enderror"
                                             value="{{ old('amount') }}">

@@ -14,7 +14,7 @@ class JournalController extends Controller
      */
     public function index()
     {
-        $journalEntries = JournalEntry::all()->sortByDesc('entry_date');
+        $journalEntries = JournalEntry::all();
         return view('dashboards.journals.index', compact('journalEntries'));
     }
 
